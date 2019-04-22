@@ -8,5 +8,8 @@ def solution(a, b):
     result = total_day % 7
     result = ( result + 5 ) % 7    
     return day[result]
-
-print(solution(5,24))
+month_l = [0,31,28,31,30,31,30,31,31,30,31,30,31]
+for i in range(1,14):
+    for j in range(1,month_l[i-1]):
+        print(solution(i,j),end='  ')
+    print()
