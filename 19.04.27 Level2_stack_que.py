@@ -39,7 +39,7 @@ def solution(bridge_length, weight, truck_weights):
             if sum(que) > weight:
                 que.pop()
                 time.pop()
-                start -= 1 ; stop = 0 ;
+                start -= 1 ; stop = 0 
         if start == end:
             answer += bridge_length
             break
@@ -83,22 +83,27 @@ from collections import deque
 def solution(bridge_length, weight, truck_weights):
     answer = 0 ; start =0 ; end = len(truck_weights) ; stop = 1
     que = deque([])
-    time = []
-    while True:
+    time = 0
+    j = 0
+    while j < 10:
+        j += 1
         if sum(que) <= weight and stop != 0:
-            time.append(0)
             que.append(truck_weights[start])
-            answer += 1; start += 1 
+            answer += 1; start += 1
             if sum(que) > weight:
                 que.pop()
-                time.pop()
-                start -= 1 ; stop = 0 
+                start -= 1 ; stop = 0
 
-        if time[start] == bridge_length:
+        if time == bridge_length:
             que.popleft()
-
+            stop = 1 ; time = 0
         
+        time += 1
+        
+        if start == end:
+            answer += bridge_length
+            break
 
     return answer
 
-print(solution(100,100,[10,10,10,10]))
+print(solution(100,100,[10,10,10,10,10,10,10,10,10]))
