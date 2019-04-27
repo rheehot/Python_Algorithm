@@ -39,7 +39,7 @@ def solution(bridge_length, weight, truck_weights):
             if sum(que) > weight:
                 que.pop()
                 time.pop()
-                start -= 1 ; stop = 0
+                start -= 1 ; stop = 0 ;
         if start == end:
             answer += bridge_length
             break
@@ -50,9 +50,55 @@ def solution(bridge_length, weight, truck_weights):
             time[start-1] += 1
     return answer
 """
-
+# 좋은 시도 2
+"""
 def solution(bridge_length, weight, truck_weights):
-    # 다시
-    pass
-    
+    answer = 0; start = 0 ; end = len(truck_weights); stop = 1
+    que = [] ; time = []
+    while True:
+        if sum(que) <= weight and stop != 0:
+            time.append(0)
+            que.append(truck_weights[start])
+            answer += 1; start += 1 
+            if sum(que) > weight:
+                que.pop()
+                time.pop()
+                start -= 1 ; stop = 0 ; answer -= 1
+        if start == end:
+            answer += bridge_length
+            break
+        if time[start-1] == bridge_length:
+            stop = 1
+            if len(que) != 1:
+                answer += len(que)
+            que = [] ; 
+        else:
+            time[start-1] += 1
+    return answer
+"""
+
+# 파이썬 공홈에서 말하는 큐 사용
+# https://docs.python.org/ko/3/tutorial/datastructures.html#using-lists-as-queues
+from collections import deque
+def solution(bridge_length, weight, truck_weights):
+    answer = 0 ; start =0 ; end = len(truck_weights) ; stop = 1
+    que = deque([])
+    time = []
+    while True:
+        if sum(que) <= weight and stop != 0:
+            time.append(0)
+            que.append(truck_weights[start])
+            answer += 1; start += 1 
+            if sum(que) > weight:
+                que.pop()
+                time.pop()
+                start -= 1 ; stop = 0 
+
+        if time[start] == bridge_length:
+            que.popleft()
+
+        
+
+    return answer
+
 print(solution(100,100,[10,10,10,10]))
