@@ -1,7 +1,6 @@
 def solution(n):
     answer = ''
     a=counting(n)
-    #print(a)
     for i in range(a):
         if n % 3 == 0:
             result = 4
