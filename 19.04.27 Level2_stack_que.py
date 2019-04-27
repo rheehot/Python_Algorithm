@@ -27,18 +27,32 @@ bridge_length	weight	truck_weights	return
 100	100	[10]	101
 100	100	[10,10,10,10,10,10,10,10,10,10]	110
 """
+"""
 def solution(bridge_length, weight, truck_weights):
-    answer = 0; start = 0 ; end = len(truck_weights); stop = 0
-    que = []  
+    answer = 0; start = 0 ; end = len(truck_weights); stop = 1
+    que = [] ; time = []
     while True:
-        if sum(que) <= weight and stop = 0:
+        if sum(que) <= weight and stop != 0:
+            time.append(0)
             que.append(truck_weights[start])
-            answer += 1; start += 1
+            answer += 1; start += 1 
             if sum(que) > weight:
                 que.pop()
-                start -= 1
-                stop = 0
-                # stop을 이용하여 참조 안하게 하려 했던 생각
-
+                time.pop()
+                start -= 1 ; stop = 0
+        if start == end:
+            answer += bridge_length
+            break
+        if time[start-1] == bridge_length:
+            stop = 1
+            que = [] ; 
+        else:
+            time[start-1] += 1
     return answer
+"""
 
+def solution(bridge_length, weight, truck_weights):
+    # 다시
+    pass
+    
+print(solution(100,100,[10,10,10,10]))
