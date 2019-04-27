@@ -1,6 +1,19 @@
 def solution(n):
     answer = ''
-    print(counting(n))
+    a=counting(n)
+    #print(a)
+    for i in range(a):
+        if n % 3 == 0:
+            result = 4
+        else:
+            result = n % 3
+        if n % 3 == 0:
+            n //= 3; n -= 1
+        else:
+            n //= 3
+        answer = answer + str(result)
+    return answer[::-1]
+
 
 def counting(n):
     count = 1
@@ -10,4 +23,5 @@ def counting(n):
         result += pow(3,count)
     return count
 
-print(solution(13))
+for i in range(0,14):
+    print(solution(i))
