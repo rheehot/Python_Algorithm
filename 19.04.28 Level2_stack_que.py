@@ -77,8 +77,10 @@ def solution(bridge_length, weight, truck_weights):
     return answer
 """
 
+# 이것두 실패... ㅠ 다시 생각하기
 # 파이썬 공홈에서 말하는 큐 사용
 # https://docs.python.org/ko/3/tutorial/datastructures.html#using-lists-as-queues
+"""
 from collections import deque
 def solution(bridge_length, weight, truck_weights):
     answer = 0 ; start =0 ; end = len(truck_weights) ; stop = 1
@@ -105,5 +107,31 @@ def solution(bridge_length, weight, truck_weights):
             break
 
     return answer
+"""
+from collections import deque
+def solution(bridge_length, weight, truck_weights):
+    answer = 0
+    que = deque([]) ; timer = deque([])
+    # while 문에서는 변수를 줄 수 없기 떄문에 별도의 추가변수가 필요
+    start = 0 ; end = len(truck_weights) ; flag = 0
+    while True:
+        if start == 0:
+            que.append(truck_weights[start])
+            timer.append(0) ; answer += 1 ; start += 1
+        elif start != 0 and start != end and sum(que) + truck_weights[start] <= weight:
+            que.append(truck_weights[start])
+            timer.append(0) ; answer += 1 ; start += 1 
+        elif start == end:
+            # 여기가 끝나는 부분이니까 반복을 종료하는 부분 
+            answer += bridge_length
+            break
+        else:
+            answer += 1
+        for i in range(len(timer)):
+            timer[i] += 1
+        if timer[flag] == bridge_length:
+            que.popleft()
+            timer.popleft()
 
-print(solution(100,100,[10,10,10,10,10,10,10,10,10]))
+    return answer
+print(solution(	2,10,[7,7,7,7]))
