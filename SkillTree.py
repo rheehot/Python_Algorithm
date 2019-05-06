@@ -29,14 +29,16 @@ def solution(skill, skill_trees):
     answer = 0
     s = list(skill[::])
     s_l = len(s)
-    count = 0 
+    count =  
     for i in skill_trees:
         c = list(i[::])
         c_l = len(c)
         for j in range(c_l):
             for k in range(s_l):
-                if c[j] != s[count]:
-                    
+                if c[j] == s[k]:
+                    count = k
+                    print(k)
+                
     return answer
 
 solution('CBD',['BACDE', 'CBADF', 'AECB', 'BDA'])
