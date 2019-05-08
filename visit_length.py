@@ -1,5 +1,4 @@
 def solution(dirs):
-    answer = 0
     move_list = list(dirs[::])
     pos_list = list()
     pos = {'x': 0,'y':0}
@@ -124,6 +123,8 @@ print(solution("ULURRDLLU"))"""
 position2=[0,0]
 pas=[]
 def U():
+    if position1[1]==5:
+      return
     position2[1] = position2[1]+1
     a='%d%d=>%d%d'%(position1[0], position1[1], position2[0], position2[1])
     b='%d%d=>%d%d'%(position2[0], position2[1], position1[0], position1[1])
@@ -131,6 +132,8 @@ def U():
     pas.append(a)
     position1[1] = position1[1]+1
 def D():
+    if position1[1]==-5:
+      return
     position2[1] = position2[1]-1
     a='%d%d=>%d%d'%(position1[0], position1[1], position2[0], position2[1])
     b='%d%d=>%d%d'%(position2[0], position2[1], position1[0], position1[1])
@@ -138,6 +141,8 @@ def D():
     pas.append(a)
     position1[1] = position1[1]-1
 def R():
+    if position1[0]==5:
+      return
     position2[0] = position2[0]+1
     a='%d%d=>%d%d'%(position1[0], position1[1], position2[0], position2[1])
     b='%d%d=>%d%d'%(position2[0], position2[1], position1[0], position1[1])
@@ -145,6 +150,8 @@ def R():
     pas.append(a)
     position1[0] = position1[0]+1
 def L():
+    if position1[0]==-5:
+      return
     position2[0] = position2[0]-1
     a='%d%d=>%d%d'%(position1[0], position1[1], position2[0], position2[1])
     b='%d%d=>%d%d'%(position2[0], position2[1], position1[0], position1[1])
