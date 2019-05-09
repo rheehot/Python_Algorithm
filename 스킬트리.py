@@ -25,20 +25,30 @@
     AECB: 가능한 스킬트리입니다.
     BDA: B 스킬을 배우기 전에 C 스킬을 먼저 배워야 합니다. 불가능한 스킬트리입니다.
 """
+# c b d 같은 경우를 리스트에 담아두고
+# 만약 이 안에 있는 스킬이라면 그것만 빼서 저장을 한다
+# 이 저장한 값을 비교를 했을때 c b d 와 같은 순서로 실행되지 않았으면 불가능한 스킬트리
+# 단 선행 스킬만 배우더라도 문젱없음
 def solution(skill, skill_trees):
-    answer = 0
+    answer = len(skill_trees)
     s = list(skill[::])
-    s_l = len(s)
-    count =  
+    print(s)
+    check_list = list()
+    temp = list()
+    a = list()
     for i in skill_trees:
-        c = list(i[::])
-        c_l = len(c)
-        for j in range(c_l):
-            for k in range(s_l):
-                if c[j] == s[k]:
-                    count = k
-                    print(k)
-                
+        temp = list(i[::])
+        for k in temp:
+            if k in s:
+                a.append(k)
+        check_list.append(a)
+        a = list()
+    print(check_list)
+    for i in range(len(skill_trees)):
+        for j in range(len(check_list[i])):
+                if s[j] != check_list[i][j]:
+                    answer -= 1
+                    break
     return answer
 
-solution('CBD',['BACDE', 'CBADF', 'AECB', 'BDA'])
+print(solution('CBD',['BACDE', 'CBADF', 'AECB', 'BDA']))
