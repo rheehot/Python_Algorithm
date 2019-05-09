@@ -43,7 +43,6 @@ def solution(skill, skill_trees):
                 a.append(k)
         check_list.append(a)
         a = list()
-    print(check_list)
     for i in range(len(skill_trees)):
         for j in range(len(check_list[i])):
                 if s[j] != check_list[i][j]:
