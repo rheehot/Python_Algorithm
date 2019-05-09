@@ -1,3 +1,18 @@
+# 93.3점/100점 ... 하
+import math
+def solution(n,stations, w):
+    answer = 0 ; start = 0
+    count_list =[]
+    for i in stations:
+        i-=1
+        count_list.append(i-w-start if i-w > 0 else 0)
+        start = i+w+1 if i+w+1 < n-1 else n-1
+    if start != n-1:
+        count_list.append(n-1-start)
+    for count in count_list:   
+        answer += math.ceil(count/(2*w+1))
+    return answer
+
 # 테스트는 일부만 통과하고 효율성에서는 통과되는 소스코드
 """import math
 def solution(n,stations, w):
@@ -7,7 +22,7 @@ def solution(n,stations, w):
         count_list.append(i-w-start if i-w >= 0 else 0)
         start = i+w if i+w < n else n
     if start != n:
-        count_list.append(n-1-start)
+        count_list.append(n-start)
     for count in count_list:
         answer += math.ceil(count/(2*w+1))
     return answer
