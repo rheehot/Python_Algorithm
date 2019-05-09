@@ -26,16 +26,7 @@ def solution(cookie):
             temp2 += l
             o_check_list.append(temp2)
         temp = 0 ; temp2 = 0
-        for k in range(len(check_list)):
-            if check_list in o_check_list:
-                temp_list.append(check_list[k])
-        for k in range(len(o_check_list)):
-            if o_check_list in check_list:
-                temp_list.append(o_check_list[k])
         answer += max(temp_list)
-        check_list = list()
-        o_check_list = list()
-        temp_list = list()
     return answer
 
 print(solution([1,1,2,3])) # return 3
