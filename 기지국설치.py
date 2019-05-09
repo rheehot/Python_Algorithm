@@ -1,4 +1,19 @@
-import math
+# 테스트는 일부만 통과하고 효율성에서는 통과되는 소스코드
+"""import math
+def solution(n,stations, w):
+    answer = 0 ; start = 0
+    count_list =[]
+    for i in stations:
+        count_list.append(i-w-start if i-w >= 0 else 0)
+        start = i+w if i+w < n else n
+    if start != n:
+        count_list.append(n-1-start)
+    for count in count_list:
+        answer += math.ceil(count/(2*w+1))
+    return answer
+"""
+# 테스트는 다 통과하지만 효율성 면에서 문제가 되는 소스코드
+"""import math
 def solution(n, stations, w):
     answer = 0
     n_l = list()
@@ -15,14 +30,11 @@ def solution(n, stations, w):
             count += 1
         else:
             if count != 0:
-                check_list.append(count)
+                answer += math.ceil(count/(2*w+1))
             count = 0
-    check_list.append(count)
-    print(n_l)
-    print(check_list)
-    for i in check_list:
-        answer += math.ceil(i/(2*w+1))
-    return answer
+    if count != 0:
+                answer += math.ceil(count/(2*w+1))
+    return answer"""
 
 print(solution(11, [4, 11], 1))
 print(solution(16, [9], 2))
