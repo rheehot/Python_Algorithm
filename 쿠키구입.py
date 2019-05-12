@@ -8,26 +8,31 @@
 cookie의 길이는 1 이상 2,000 이하입니다.
 cookie의 각각의 원소는 1 이상 500 이하인 자연수입니다."""
 def solution(cookie):
-    answer = 0
-    temp = 0 ; temp2 = 0
-    left_list = list()
-    right_list = list()
-    temp_list = list()
-    check_list = list()
-    o_check_list = list()
-    for i in range(len(cookie)):
-        left_list.append(list(cookie[:i:]))
-        right_list.append(list(cookie[i::]))
-    for i in range(len(cookie)):
-        for k in reversed(left_list[i]):
-            temp += k
-            check_list.append(temp)
-        for l in right_list[i]:
-            temp2 += l
-            o_check_list.append(temp2)
-        temp = 0 ; temp2 = 0
-        answer += max(temp_list)
+    answer = -1
+    total = sum(cookie)
+    print(cookie,total)
+    standard = total // 2
+    is_ok = 0 
+    check_total = 0
+    for i in range(standard,0,-1):
+        if check(cookie,standard):
+            return standard
+            is_ok += 1
+    if is_ok == 0:
+        answer = 0
     return answer
+
+def check(cookie,end):
+    is_ok = 0
+    l_len = len(cookie)-1
+    for c in range(l_len,-1,-1):
+        if end > is_ok:
+            is_ok += cookie[c]
+        else:
+            return False
+        if end == is_ok:
+             return True
+    
 
 print(solution([1,1,2,3])) # return 3
 print(solution([1,2,4,5])) # return 0 구할 수 없다면
