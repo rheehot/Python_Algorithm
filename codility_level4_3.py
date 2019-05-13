@@ -4,16 +4,15 @@ def solution(N,A):
     check_list = [0]* N
     a_len = len(A)
     for i in range(a_len):
-        if a_len == 1:
-            check_list[A[i]%N-1] += 1
-        else:
-            if A[i]==max_v:
-                check_list = [check_list[check_v]]*N
-            else:
+        if A[i]==max_v:
+            if i == 0:
                 check_list[A[i]%N-1] += 1
-                if check_v < check_list[A[i]%N-1]:
-                    check_v = A[i]%N
-        print(check_list)
+            else :
+                check_list = [check_list[check_v]]*N
+        else:
+            check_list[A[i]%N-1] += 1
+            if check_list[check_v] < check_list[A[i]%N-1]:
+                check_v = A[i] % N - 1
     return check_list
 
 # 맥스 값의 위치를 구했기 때문에 
@@ -21,7 +20,7 @@ def solution(N,A):
 # 선언한 변수를 가지고 초기화 [max_!] * n을 시켜서 계산할 수 있도록 진행
 #solution(5,[3,3,3,1,2,0])
 solution(5,[3, 4, 4, 6, 1, 4, 4])
-solution(1,[1])
+solution(10,[1,1,1,1,1,1,1,1,1,1])
 """def solution(N, A):
     max_a = max(A)
     check_list = [0]*N
