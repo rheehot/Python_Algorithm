@@ -1,28 +1,30 @@
+# 맥스값이 얼마인지 미리 계산
+# check_index로 가장 큰 값의 위치를 알아내기 위해서 값이 증가했을때 check_list에서 그 위치에 해당하는 값의 인덱스로 변경
+# 계산하는 과정을 줄여보자..
 def solution(N,A):
-    check_v = 0
+    check_index = 0
     max_v = max(A)
-    check_list = [0]* N
+    check_list = [0] * N
     a_len = len(A)
+    temp = 0
     for i in range(a_len):
+        temp = A[i]%N-1
         if A[i]==max_v:
             if A[i] == 0:
-                check_list = [check_list[check_v]]*N
+                check_list = [check_list[check_index]]*N
             elif i == 0 :
                 if a_len == 1:
-                    check_list[A[i]%N-1] += 1
+                    check_list[temp] += 1
                 else:
-                    check_list = [check_list[check_v]]*N        
+                    check_list = [check_list[check_index]] * N        
             else :
-                check_list = [check_list[check_v]]*N
+                check_list = [check_list[check_index]] * N
         else:
-            check_list[A[i]%N-1] += 1
-            if check_list[check_v] < check_list[A[i]%N-1]:
-                check_v = A[i] % N - 1
+            check_list[temp] += 1
+            if check_list[check_index] < check_list[temp]:
+                check_index = temp
     return check_list
 
-# 맥스 값의 위치를 구했기 때문에 
-# 체크 리스트의 맥스 값을 구하기 위해서 변수를 하나 선언을 하고
-# 선언한 변수를 가지고 초기화 [max_!] * n을 시켜서 계산할 수 있도록 진행
 solution(5,[3,3,3,1,2,0])
 solution(5,[3, 4, 4, 6, 1, 4, 4])
 solution(1,[100000,99999,99999,99999])
