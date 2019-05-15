@@ -16,7 +16,7 @@ Write an efficient algorithm for the following assumptions:
 N is an integer within the range [1..100,000];
 each element of array A is an integer within the range [−1,000,000..1,000,000].
 """
-def solution(A):
+"""def solution(A):
     A = list(set(A))
     A.sort()
     min_a = min(A)
@@ -29,17 +29,23 @@ def solution(A):
             else:
                 return min_a
     return min_a
-
+"""
 def solution(A):
-    A.sort()
     A = list(set(A))
+    A.sort()
+    min_a = min(A)
+    max_a = max(A)
+    len_a = len(A)
+    if max_a == min_a + len_a + 1:
+        return len_a + 1
     for i in range(len(A)-1):
-        print(i,A[i],A[i+1])
-        if A[i] != A[i+1] -1 and A[i] > 0:
-            return A[i+1] -1
-        elif A[i] < 0:
-            pass
-    return max(A)+1
+        if A[i]+1 != A[i+1]:
+            if A[i]+1 <= 0:
+                return 1
+            else:
+                return A[i]+1
+    return A[-1] + 1 
 
-print(solution([1, 3, 6, 4, 1, 2]))
+print(solution([1, 3, 6, 4, 1, 2,0]))
 print(solution([-1,-2,0,1,2,3]))
+print(solution( [1, 3, 6, 4, 1, 2]))
