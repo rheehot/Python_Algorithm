@@ -23,6 +23,8 @@ def solution(number, k):
     answer_temp = list()
     answer = ''
     for i in range(len(num_list)):
+        # 여기에서 남은 길이가 추가로 남지 않았다면 
+        # 그냥 진행하고 아닐 경우에는 앞의 값보다 크면 앞에 값을 날려주게 만들어야 할 듯한데
         if len(answer_temp) < len(num_list)-k:
             answer_temp.append(num_list[i])
         else:
