@@ -14,7 +14,9 @@ print(li)
 print(A(10,map(lambda x: x if x%2==1 else 0,li)))
 # 나옴
 
-
+# 바로 실행 가능한 람다 식, 함수형 실행
+(lambda x: x%2==1)(10)
+print((lambda x: x if x%2==0 else 0)(10))
 # 컴프리핸션
 # 조금더 편리하게, 파이썬스럽게 코딩하는 법
 a = [i for i in range(10)]
