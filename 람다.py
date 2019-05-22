@@ -17,6 +17,14 @@ print(A(10,map(lambda x: x if x%2==1 else 0,li)))
 # 바로 실행 가능한 람다 식, 함수형 실행
 (lambda x: x%2==1)(10)
 print((lambda x: x if x%2==0 else 0)(10))
+
+# 람다를 변수에 담을 수 있다.
+dd = lambda x: x if x%2==0 else 0
+print(dd(10))
+# 람다를 쓰는 이유
+# 간단하여, 줄을 줄일수있다. 
+
+
 # 컴프리핸션
 # 조금더 편리하게, 파이썬스럽게 코딩하는 법
 a = [i for i in range(10)]
