@@ -1,24 +1,19 @@
 import sys
-check_list = []
-count = 0
-is_add_ok = True
 n = int(sys.stdin.readline())
-for count in range(n):
-    temp = sys.stdin.readline().rstrip()
-    copy_temp = temp
-    check_list = list(set(copy_temp))
-    for i in range(len(temp)):
-        check = temp[i]
-        if check in check_list and temp[i-1] != check:
-            is_add_ok = False
-            break
+count = 0
+for i in range(n):
+    will_check_text = sys.stdin.readline().rstrip()
+    will_check_text_length = len(will_check_text)
+    temp = ""
+    temp_list = list()
+    for j in range(will_check_text_length):
+        if temp != will_check_text[j] and will_check_text[j] not in temp_list:
+            temp = will_check_text[j]
+            temp_list.append(will_check_text[j])
         else:
-            check_list.append(check)
-        print(check,check_list,is_add_ok)
-    if is_add_ok == True:   
-        count += 1
-    else:
-        pass
-    is_add_ok == True
-    check_list = []
-print(count)
+            if temp == will_check_text[j]:
+                pass
+            else:
+                count += 1
+                break
+print(n-count)
