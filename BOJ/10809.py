@@ -9,7 +9,7 @@ for i in range(len(S)):
         alpabet_list[ord(S[i])-ord('a')] = i
 for i in range(len(alpabet_list)):
     print(alpabet_list[i],end=' ')
-
+ 
 # 나와야하는 출력 값
 # 1 0 -1 -1 2 -1 -1 -1 -1 4 3 -1 -1 7 5 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 # 나온 출력 값 (리스트로 출력 시켰었음...)
