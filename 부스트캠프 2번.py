@@ -20,7 +20,7 @@ def solution(arr1,arr2):
         pass
       else:
         count_2 = 4 if arr2.count(i) > 4 else arr2.count(i)
-        count_arr2.append([i,arr2.count(i)])
+        count_arr2.append([i,count_2])
     if len(count_arr1) == 0 and len(count_arr2) == 0:
       return 0
     else:
